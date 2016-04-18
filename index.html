@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <title>Need For Lightspeed</title>
+    <!-- <link rel="icon" type="image/jpg" href="images/octocatjedi.jpg"> -->
+    <link href="./css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic" rel="stylesheet" type="text/css">
+
+    <script src="js/app.js"></script>
+
+    <script src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="http://backbonejs.org/backbone-min.js"></script>
+    <script src="https://craig.global.ssl.fastly.net/js/mousetrap/mousetrap.min.js?71631"></script>
+
+  <!-- Dom script (New game view) -->
+    <script type="text/template" id="new-player-template">
+      <div id="new-player-form">
+        <div class="playview">
+          <input type="text" id="playerinput" placeholder="Character Name" />
+          <button id="playersubmit">Play</button>
+        </div>
+        <div class="playview">
+          <span><input type="radio" name="shipthing" id="fastShip" />Light Fighter Ship</span>
+          <span><input type="radio" name="shipthing" id="hybridShip" />Smuggler's Ship</span>
+        </div>
+      </div>
+    </script>
+
+  <!-- Dom script (Play game view) -->
+    <script type="text/template" id="play-game-template">
+      <div id="gameplayview">
+        <h3><span class="specinput"><%= name %></span>is flyin' in the <span class="specinput"><%= shipChoice %></span></h3>
+        <p>Energy Left: <span class="specinput"><%= energyLeft %></span></p>
+        <p>Stowaways Added: <span class="specinput"><%= podHit %></span></p>
+        <h3 id="templatelocal">Your Ship's Location:  <span class="specinput"><%= templatelocal %></span></h3>
+        <h4 id="energyRefill">Planet With Refill: X:<span class="specinput"><%= energyPosX %></span> / Y:<span class="specinput"><%= energyPosY %></span></h4>
+        <div id="controlbuttons">
+          <button id="moveleft">LEFT</button>
+          <button id="moveright">RIGHT</button>
+          <button id="moveup">UP</button>
+          <button id="movedown">DOWN</button>
+        </div>
+        </div>
+        <div id="galaxyGrid"></div>
+    </script>
+    <!-- Game Over View -->
+    <script type="text/template" id="end-game-template">
+      <h1>You've been Destroyed!</h1>
+      <h2 class="endgamestuff">Player's Name:
+        <span><%= name %></span>
+      </h2>
+      <h2 class="endgamestuff">Player's Score:
+        <span><%= score %></span>
+      </h2>
+      <h3>Reset the Galaxy?</h3>
+    </script>
+</head>
+
+<body>
+  <div id="options">
+    <h3><a href="#/newplayer">New Game</a></h3>
+  </div>
+  <h1>Feel The Need</h1>
+  <h2 id="underhead">The Need For Lightspeed!</h2>
+
+
+  <main id="content">
+    <div id="new-player-section"></div>
+    <div id="play-game-section"></div>
+    <div id="end-game-section"></div>
+  </main>
+
+</body>
+
+</html>

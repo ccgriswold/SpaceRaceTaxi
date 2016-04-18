@@ -1,0 +1,30 @@
+{
+  "name": "spaceracetaxi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claygrizzy/SpaceRaceTaxi.git"
+  },
+  "author": "Clayton Griswold",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/claygrizzy/SpaceRaceTaxi/issues"
+  },
+  "homepage": "https://github.com/claygrizzy/SpaceRaceTaxi#readme",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "browser": "^0.2.6",
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.12.3",
+    "gulp": "^3.9.1"
+  }
+}
