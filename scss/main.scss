@@ -8,9 +8,11 @@ $color-set3: #3644fa;
 
 html{
   margin: 0;
-  background-image:url(http://universe-beauty.com/albums/userpics/1/7/stars-and-planets-photo-img330-JPG.jpg);
-  //background-image: url(Map_x-wing-02.jpg);
-  background-repeat: no-repeat;
+  //background-image:url(http://universe-beauty.com/albums/userpics/1/7/stars-and-planets-photo-img330-JPG.jpg);
+  background-image: url(../images/Map_x-wing-02.jpg);
+  background-size: cover;
+  background-color: black;
+  background-repeat: space;
 }
 
 h1{
@@ -97,7 +99,7 @@ h1{
   padding: 0;
   display: inline-block;
   margin-right: 5%;
-  width: 450px;
+  margin-top: 5%;
 }
 .parsec{
   border: 1px solid white;
@@ -108,10 +110,11 @@ h1{
   margin-bottom: -3px;
 }
 #player-block{
-  background-color: yellow;
+  background-image: url(http://cdn.movieweb.com/img.news.tops/NEJHQecBKaAkNJ_1_b.jpg);
 }
 #stowaway-block{
-  background-color: #11d7f2;
+  //background-color: #11d7f2;
+  background-image: url('http://www.internetmodeler.com/artman/uploads/1/IMG_0556.JPG');
 }
 
 #end-game-template{

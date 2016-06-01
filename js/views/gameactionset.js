@@ -32,37 +32,31 @@ module.exports=Backbone.View.extend({
   template: _.template(document.getElementById('play-game-template').textContent),
 
   render:function(){
-    var playerName = this.model.get('name');
-    var movedX = this.model.get('localX');
-    var movedY = this.model.get('localY');
-    var energyLeft = this.model.get('energyTank');
-    var starterEnergy = this.model.get('startingTank');
-    var energyPosX = this.model.get('energyPosX');
-    var energyPosY = this.model.get('energyPosY');
     var podHit = this.model.get('podHit');
     var position = 'X:' + movedX + ' / Y:' + movedY;
     var shipChoice = this.model.get('vehicle');
 
     var htmlTemp = this.template({
-      name: playerName,
-      shipChoice: shipChoice,
-      energyLeft: energyLeft,
-      templatelocal: position,
-      podHit: podHit,
-      energyPosX: energyPosX,
-      energyPosY: energyPosY,
+      name: this.model.get('name'),
+      movedX: this.model.get('localX'),
+      movedY: this.model.get('localY'),
+      starterEnergy: this.model.get('startingTank'),
+      energyLeft: this.model.get('energyTank'),
+      energyPosX: this.model.get('energyPosX'),
+      energyPosY: this.model.get('energyPosY'),
+      score: this.model.get('score'),
     });
 
     this.el.innerHTML = htmlTemp;
 
     var grid = document.getElementById('galaxyGrid');
-      for(var x = 0; x <= 20; x++){
-        for(var y = 0; y <= 20; y++){
+      for(var x = 0; x <= 19; x++){
+        for(var y = 19; y <= 0; y--){
           var div = document.createElement('div');
           div.setAttribute('id', 'parsec-' + x + '-' + y);
           div.classList.add('parsec');
           grid.appendChild(div);
-            console.log('New Div Created');
+            // console.log('New Div Created');
         }
       }
 
@@ -77,17 +71,18 @@ module.exports=Backbone.View.extend({
       this.energyCollect();
     }
     this.model.newPassenger();
+    this.model.firstPlayer();
   },
 
   energyCollect: function(){
-    this.model.set('podHit', this.model.get('podHit') + 1);
+    this.model.set('score', this.model.get('score') + 1);
     this.model.RandoEnergyLocal();
   },
 
   movingUp: function(){
     //console.log('Up Movement Activated');
     if(this.model.get('localY') === this.model.get('dimensionTop')){
-      alert('You\'ve reached the edge of the galaxy!');
+    //  alert('You\'ve reached the edge of the galaxy!');
     }
     this.model.shipMovesUp();
   },
@@ -95,7 +90,7 @@ module.exports=Backbone.View.extend({
   movingDown: function(){
     //console.log('Down Movement Activated');
     if(this.model.get('localY') === this.model.get('dimensionBottom')){
-      alert('You\'ve reached the edge of the galaxy!');
+    //  alert('You\'ve reached the edge of the galaxy!');
     }
     this.model.shipMovesDown();
   },
@@ -103,7 +98,7 @@ module.exports=Backbone.View.extend({
   movingRight: function(){
     //console.log('Right Movement Activated');
     if(this.model.get('localX') === this.model.get('dimensionTop')){
-      alert('You\'ve reached the edge of the galaxy!');
+    //  alert('You\'ve reached the edge of the galaxy!');
     }
     this.model.shipMovesRight();
   },
@@ -111,7 +106,7 @@ module.exports=Backbone.View.extend({
   movingLeft: function(){
     //console.log('Left Movement Activated');
     if(this.model.get('localX') === this.model.get('dimensionBottom')){
-      alert('You\'ve reached the edge of the galaxy!');
+    //  alert('You\'ve reached the edge of the galaxy!');
     }
     this.model.shipMovesLeft();
   },

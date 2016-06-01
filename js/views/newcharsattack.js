@@ -13,15 +13,15 @@ module.exports=Backbone.View.extend({
     this.model.set('vehicle', 'X-Wing');
     //console.log(this.model.get('vehicle'));
     this.model.set('fuelBurn', '1');
-    this.model.set('startingTank', 65);
-    this.model.set('energyTank', 65);
+    this.model.set('startingTank', 70);
+    this.model.set('energyTank', 70);
   },
   hybridShip: function(){
     this.model.set('vehicle', 'Millennium Falcon');
     //console.log(this.model.get('vehicle'));
     this.model.set('fuelBurn', '3');
-    this.model.set('startingTank', 120);
-    this.model.set('energyTank', 120);
+    this.model.set('startingTank', 130);
+    this.model.set('energyTank', 130);
   },
   newChar: function(){
     var name = document.getElementById('playerinput').value;

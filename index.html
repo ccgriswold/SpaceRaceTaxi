@@ -4,7 +4,7 @@
 <head>
 
     <title>Need For Lightspeed</title>
-    <!-- <link rel="icon" type="image/jpg" href="images/octocatjedi.jpg"> -->
+    <link rel="icon" type="image/jpg" href="./images/jedioctocat.jpg">
     <link href="./css/main.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic" rel="stylesheet" type="text/css">
 
@@ -36,7 +36,7 @@
         <p>Energy Left: <span class="specinput"><%= energyLeft %></span></p>
         <p>Stowaways Added: <span class="specinput"><%= podHit %></span></p>
         <h3 id="templatelocal">Your Ship's Location:  <span class="specinput"><%= templatelocal %></span></h3>
-        <h4 id="energyRefill">Planet With Refill: X:<span class="specinput"><%= energyPosX %></span> / Y:<span class="specinput"><%= energyPosY %></span></h4>
+        <h4 id="energyRefill">Planet With Passenger: X:<span class="specinput"><%= energyPosX %></span> / Y:<span class="specinput"><%= energyPosY %></span></h4>
         <div id="controlbuttons">
           <button id="moveleft">LEFT</button>
           <button id="moveright">RIGHT</button>
@@ -48,7 +48,7 @@
     </script>
     <!-- Game Over View -->
     <script type="text/template" id="end-game-template">
-      <h1>You've been Destroyed!</h1>
+      <h1>You're floating dead in Space!</h1>
       <h2 class="endgamestuff">Player's Name:
         <span><%= name %></span>
       </h2>

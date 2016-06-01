@@ -4,22 +4,24 @@ module.exports= Backbone.Model.extend({
   },
 
   defaults:{
+    name: "Pilot",
     energyTank: 50,
     startingTank: 50,
     fuelBurn: 2,
-    localX: 5,
-    localY: 5,
-    energyPosX: Math.round(Math.random() *20),
-    energyPosY: Math.round(Math.random()*20),
-    StowPosX: Math.round(Math.random() *20),
-    StowPosY: Math.round(Math.random()*20),
+    localX: 9,
+    localY: 9,
+    energyPosX: Math.round(Math.random() *19),
+    energyPosY: Math.round(Math.random()*19),
+    // StowPosX: Math.round(Math.random() *19),
+    // StowPosY: Math.round(Math.random()*19),
     podHit: 0,
-    podPower: Math.round(Math.random()*50),
+    podPower: (15 + (Math.round(Math.random()*100))),
     dimensionTop: 20,
     dimensionBottom: 0,
     shipChoice: 'Escape Pod',
-    name: 'Pilot',
     score: 0,
+    highScore: 0,
+    highUser: 'MAN'
   },
 
   nameOfPlayer: function(charInput){
@@ -31,10 +33,16 @@ module.exports= Backbone.Model.extend({
     this.set('energyTank', this.get('energyTank') - this.get('fuelBurn'));
   },
 
+  checkFuel: function () {
+    if (this.get('energyTank') <= 0) {
+      this.scoreSaver();
+    }
+  },
+
   scoreSaver: function(){
     if(this.get('score') > this.get('highScore')){
       this.set('highScore', this.get('score'));
-      this.set('userHighScore', this.get('name'));
+      this.set('highUser', this.get('name'));
     }
   },
 
@@ -55,21 +63,21 @@ module.exports= Backbone.Model.extend({
     if(starter !== null){
       starter.removeAttribute('id', 'stowaway-block');
     }
-    var rider = document.getElementById('parsec-' + this.get('StowPosX') + '-' + this.get('StowPosY'));
+    var rider = document.getElementById('parsec-' + this.get('energyPosX') + '-' + this.get('energyPosY'));
     if(rider !== null){
       rider.setAttribute('id', 'stowaway-block');
     }
   },
 
   //Random energy generator
-  RandoEnergyLocal: function(){
-    this.set('energyPosX', Math.round(Math.random() * 20));
-    this.set('energyPosY', Math.round(Math.random() * 20));
-    this.set('energyTank', this.get('energyTank')+ (Math.round(Math.random() * 50)));
-    if(this.get('energyTank') >= this.get('startingTank')){
-      this.set('energyTank', this.get('startingTank'));
-    }
-  },
+  // RandoEnergyLocal: function(){
+  //   this.set('energyPosX', Math.round(Math.random() * 20));
+  //   this.set('energyPosY', Math.round(Math.random() * 20));
+  //   this.set('energyTank', this.get('energyTank')+ (Math.round(Math.random() * 50)+15));
+  //   if(this.get('energyTank') > this.get('startingTank')){
+  //     this.set('energyTank', this.get('startingTank'));
+  //   }
+  // },
 
   //Controled Movements
   shipMovesUp: function(){
@@ -77,6 +85,7 @@ module.exports= Backbone.Model.extend({
       this.set('localY', (this.get('localY') +1));
       this.burntEnergy();
     }
+    this.checkFuel();
   },
 
   shipMovesDown: function(){
@@ -84,6 +93,7 @@ module.exports= Backbone.Model.extend({
       this.set('localY', (this.get('localY') -1));
       this.burntEnergy();
     }
+    this.checkFuel();
   },
 
   shipMovesRight: function(){
@@ -91,6 +101,7 @@ module.exports= Backbone.Model.extend({
       this.set('localX', (this.get('localX') +1));
       this.burntEnergy();
     }
+    this.checkFuel();
   },
 
   shipMovesLeft: function(){
@@ -98,6 +109,7 @@ module.exports= Backbone.Model.extend({
       this.set('localX', (this.get('localX') -1));
       this.burntEnergy();
     }
+    this.checkFuel();
   },
 
 });

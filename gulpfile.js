@@ -26,7 +26,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('images', function(){
-    return gulp.src('./images/**/*')
+    return gulp.src('./images/*')
         .pipe(gulp.dest('./public/images'));
 });
 gulp.task('browserSync', function() {
