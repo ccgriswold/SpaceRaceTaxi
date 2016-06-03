@@ -8,14 +8,16 @@ module.exports = Backbone.View.extend({
   template: _.template(document.getElementById('end-game-template').textContent),
 
   render: function(){
-    var gameScore = this.template({
+    var html = this.template({
       name: this.model.get('name'),
-      score: this.model.get('podHit'),
+      score: this.model.get('score'),
+      highScore: this.model.get('highScore'),
+      highUser: this.model.get('highUser'),
     });
-    this.el.innerHTML = gameScore;
+    this.el.innerHTML = html;
   },
   newChar: function(){
     window.location.reload();
-    Backbone.history.navigate('#/newChar');
+    Backbone.history.navigate('#/newChar', {trigger:true});
   },
 });

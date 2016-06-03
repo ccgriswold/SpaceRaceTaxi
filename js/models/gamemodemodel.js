@@ -10,13 +10,11 @@ module.exports= Backbone.Model.extend({
     fuelBurn: 2,
     localX: 9,
     localY: 9,
-    energyPosX: Math.round(Math.random() *19),
-    energyPosY: Math.round(Math.random()*19),
+    energyPosX: Math.round(Math.random() * 19),
+    energyPosY: Math.round(Math.random()* 19),
     // StowPosX: Math.round(Math.random() *19),
     // StowPosY: Math.round(Math.random()*19),
-    podHit: 0,
-    podPower: (15 + (Math.round(Math.random()*100))),
-    dimensionTop: 20,
+    dimensionTop: 19,
     dimensionBottom: 0,
     shipChoice: 'Escape Pod',
     score: 0,
@@ -27,6 +25,11 @@ module.exports= Backbone.Model.extend({
   nameOfPlayer: function(charInput){
     this.set('name', charInput);
     console.log(charInput);
+  },
+
+  nameOfShip: function(input){
+    this.set('shipChoice', input);
+    console.log(input);
   },
 
   burntEnergy: function(){
@@ -70,14 +73,14 @@ module.exports= Backbone.Model.extend({
   },
 
   //Random energy generator
-  // RandoEnergyLocal: function(){
-  //   this.set('energyPosX', Math.round(Math.random() * 20));
-  //   this.set('energyPosY', Math.round(Math.random() * 20));
-  //   this.set('energyTank', this.get('energyTank')+ (Math.round(Math.random() * 50)+15));
-  //   if(this.get('energyTank') > this.get('startingTank')){
-  //     this.set('energyTank', this.get('startingTank'));
-  //   }
-  // },
+  RandoEnergyLocal: function(){
+    this.set('energyPosX', Math.round(Math.random() * 19));
+    this.set('energyPosY', Math.round(Math.random() * 19));
+    this.set('energyTank', this.get('energyTank')+ (Math.round(Math.random() * (5-25))+15));
+    if(this.get('energyTank') > this.get('startingTank')){
+      this.set('energyTank', this.get('startingTank'));
+    }
+  },
 
   //Controled Movements
   shipMovesUp: function(){

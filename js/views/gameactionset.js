@@ -27,17 +27,16 @@ module.exports=Backbone.View.extend({
     'click #movedown': 'movingDown',
     'click #moveleft': 'movingLeft',
     'click #moveright': 'movingRight',
+    'keypress': 'keyAction'
   },
 
   template: _.template(document.getElementById('play-game-template').textContent),
 
   render:function(){
-    var podHit = this.model.get('podHit');
-    var position = 'X:' + movedX + ' / Y:' + movedY;
-    var shipChoice = this.model.get('vehicle');
 
     var htmlTemp = this.template({
       name: this.model.get('name'),
+      shipChoice: this.model.get('vehicle'),
       movedX: this.model.get('localX'),
       movedY: this.model.get('localY'),
       starterEnergy: this.model.get('startingTank'),
@@ -50,19 +49,19 @@ module.exports=Backbone.View.extend({
     this.el.innerHTML = htmlTemp;
 
     var grid = document.getElementById('galaxyGrid');
-      for(var x = 0; x <= 19; x++){
-        for(var y = 19; y <= 0; y--){
+      for(var y = 19; y <= 0; y--){
+        for(var x = 19; x <= 0; y++){
           var div = document.createElement('div');
-          div.setAttribute('id', 'parsec-' + x + '-' + y);
-          div.classList.add('parsec');
-          grid.appendChild(div);
-            // console.log('New Div Created');
+            div.setAttribute('id', 'parsec-' + x + '-' + y);
+            div.classList.add('parsec');
+            grid.appendChild(div);
+            console.log('New Div Created');
         }
       }
 
     //console.log(this.model.get('energyTank'));
     if(this.model.get('energyTank') <= 0){
-      window.alert('You\'re dead in Space without Fuel!');
+      // window.alert('You\'re dead in Space without Fuel!');
       Backbone.history.navigate('end', {trigger: true});
       }
 

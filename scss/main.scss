@@ -12,7 +12,7 @@ html{
   background-image: url(../images/Map_x-wing-02.jpg);
   background-size: cover;
   background-color: black;
-  background-repeat: space;
+  background-repeat: none;
 }
 
 h1{
@@ -95,26 +95,26 @@ h1{
   }
 }
 #galaxyGrid{
+  width: 400px;
   margin-left: 5%;
-  padding: 0;
-  display: inline-block;
   margin-right: 5%;
   margin-top: 5%;
 }
 .parsec{
+  display: inline-block;
   border: 1px solid white;
   width: 20px;
   height: 20px;
-  display: inline-table;
-  margin: 1px;
-  margin-bottom: -3px;
+  margin: 5px 5px;
+  background-color: yellow;
 }
 #player-block{
-  background-image: url(http://cdn.movieweb.com/img.news.tops/NEJHQecBKaAkNJ_1_b.jpg);
+  background-color: blue;
+  // background-image: url(http://cdn.movieweb.com/img.news.tops/NEJHQecBKaAkNJ_1_b.jpg);
 }
 #stowaway-block{
-  //background-color: #11d7f2;
-  background-image: url('http://www.internetmodeler.com/artman/uploads/1/IMG_0556.JPG');
+  background-color: #11d7f2;
+  // background-image: url('http://www.internetmodeler.com/artman/uploads/1/IMG_0556.JPG');
 }
 
 #end-game-template{
